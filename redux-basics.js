@@ -1,22 +1,19 @@
-// this is a practice node file.
-
 const redux = require('redux');
 const createStore = redux.createStore;
 
 const initialState = {
     counter: 0
-};
+}
 
 // Reducer
 const rootReducer = (state = initialState, action) => {
-    if(action.type === 'INC_COUNTER') {
-        // first spread the old state to make a copy, then update it. This is immutable
+    if (action.type === 'INC_COUNTER') {
         return {
             ...state,
             counter: state.counter + 1
         };
     }
-    if(action.type === 'ADD_COUNTER') {
+    if (action.type === 'ADD_COUNTER') {
         return {
             ...state,
             counter: state.counter + action.value
@@ -31,11 +28,10 @@ console.log(store.getState());
 
 // Subscription
 store.subscribe(() => {
-    console.log('[Subscription]', store.getState())
+    console.log('[Subscription]', store.getState());
 });
 
-// Action
+// Dispatching Action
 store.dispatch({type: 'INC_COUNTER'});
 store.dispatch({type: 'ADD_COUNTER', value: 10});
 console.log(store.getState());
-
